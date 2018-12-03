@@ -13,7 +13,7 @@ RUN yum install -y auto{conf,make} ctags elfutils gcc{,-c++} gettext intltool li
 
 # Update libtool
 RUN yum remove -y libtool && \
-    curl http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz && \
+    curl http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz -o libtool-2.4.6.tar.gz && \
     tar zxvf libtool-2.4.6.tar.gz && cd libtool-2.4.6 && \
     ./configure --prefix=/usr && \
     make && make install
