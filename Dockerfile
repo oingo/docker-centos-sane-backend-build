@@ -12,7 +12,8 @@ RUN yum install -y auto{conf,make} ctags elfutils gcc{,-c++} gettext intltool li
     yum clean all
 
 # Update libtool
-RUN yum remove -y libtool && \
+RUN cd ~ && \
+    yum remove -y libtool && \
     curl -O http://mirrors.ustc.edu.cn/gnu/libtool/libtool-2.4.6.tar.gz && \
     tar zxvf libtool-2.4.6.tar.gz && cd libtool-2.4.6 && \
     ./configure --prefix=/usr && \
@@ -21,7 +22,7 @@ RUN yum remove -y libtool && \
 RUN mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
 
 # Compile SANE Backend.
-RUN cd root && \
+RUN cd ~ && \
 	git clone https://gitlab.com/sane-project/backends.git sane-backends && \
 	cd sane-backends && \
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var  --enable-avahi BACKENDS="kodakaio test" && \
