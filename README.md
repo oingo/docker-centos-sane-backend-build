@@ -1,4 +1,4 @@
-## SANE Backend build environment (CentOS) Dockerfile
+## SANE Backend build environment (CentOS - x64) Dockerfile
 
 
 ### Base Docker Image
