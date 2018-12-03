@@ -11,6 +11,13 @@ RUN yum install -y auto{conf,make} ctags elfutils gcc{,-c++} gettext intltool li
     yum install -y git yum-utils && \
     yum clean all
 
+# Update libtool
+RUN yum remove -y libtool && \
+    curl http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz && \
+    tar zxvf libtool-2.4.6.tar.gz && cd libtool-2.4.6 && \
+    ./configure --prefix=/usr && \
+    make && make install
+
 RUN mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
 
 # Compile SANE Backend.
